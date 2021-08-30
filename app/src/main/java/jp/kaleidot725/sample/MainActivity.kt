@@ -3,15 +3,13 @@ package jp.kaleidot725.sample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 import jp.kaleidot725.sample.ui.theme.SampleTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -40,18 +38,21 @@ private fun CounterOver10(count: Int, onPlus: () -> Unit, onMinus: () -> Unit) {
     var plusCount by remember { mutableStateOf(0) }
     var minusCount by remember { mutableStateOf(0) }
 
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Red)
-    ) {
-        Column {
-            Text("Count $count PlusCount $plusCount MinusCount $minusCount")
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .wrapContentHeight()
+                .fillMaxWidth()
+                .align(Alignment.Center)
+        ) {
+            Text(text = "Counter Over10", fontSize = 20.sp)
+            Text(text = "Count $count PlusCount $plusCount MinusCount $minusCount")
             Button(
                 onClick = {
                     plusCount++
                     onPlus.invoke()
-                }
+                },
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Plus")
             }
@@ -59,7 +60,8 @@ private fun CounterOver10(count: Int, onPlus: () -> Unit, onMinus: () -> Unit) {
                 onClick = {
                     minusCount++
                     onMinus.invoke()
-                }
+                },
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Minus")
             }
@@ -72,18 +74,21 @@ private fun Counter(count: Int, onPlus: () -> Unit, onMinus: () -> Unit) {
     var plusCount by remember { mutableStateOf(0) }
     var minusCount by remember { mutableStateOf(0) }
 
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Blue)
-    ) {
-        Column {
-            Text("Count $count PlusCount $plusCount MinusCount $minusCount")
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .wrapContentHeight()
+                .fillMaxWidth()
+                .align(Alignment.Center)
+        ) {
+            Text(text = "Counter", fontSize = 20.sp)
+            Text(text = "Count $count PlusCount $plusCount MinusCount $minusCount")
             Button(
                 onClick = {
                     plusCount++
                     onPlus.invoke()
-                }
+                },
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Plus")
             }
@@ -91,7 +96,8 @@ private fun Counter(count: Int, onPlus: () -> Unit, onMinus: () -> Unit) {
                 onClick = {
                     minusCount++
                     onMinus.invoke()
-                }
+                },
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Minus")
             }
